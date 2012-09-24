@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1C0E35D16110F450022AC87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0E35C16110F450022AC87 /* UIKit.framework */; };
+		B1C0E35F16110F450022AC87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0E35E16110F450022AC87 /* Foundation.framework */; };
+		B1C0E36116110F450022AC87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0E36016110F450022AC87 /* CoreGraphics.framework */; };
+		B1C0E36716110F450022AC87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E36516110F450022AC87 /* InfoPlist.strings */; };
+		B1C0E36916110F450022AC87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0E36816110F450022AC87 /* main.m */; };
+		B1C0E36D16110F460022AC87 /* TestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0E36C16110F450022AC87 /* TestAppDelegate.m */; };
+		B1C0E36F16110F460022AC87 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E36E16110F460022AC87 /* Default.png */; };
+		B1C0E37116110F460022AC87 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37016110F460022AC87 /* Default@2x.png */; };
+		B1C0E37316110F460022AC87 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37216110F460022AC87 /* Default-568h@2x.png */; };
+		B1C0E37616110F460022AC87 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0E37516110F460022AC87 /* TestViewController.m */; };
+		B1C0E37916110F460022AC87 /* TestViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37716110F460022AC87 /* TestViewController_iPhone.xib */; };
+		B1C0E37C16110F460022AC87 /* TestViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37A16110F460022AC87 /* TestViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B1C0E35816110F450022AC87 /* hipmobtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hipmobtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1C0E35C16110F450022AC87 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B1C0E35E16110F450022AC87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B1C0E36016110F450022AC87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B1C0E36416110F450022AC87 /* hipmobtest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hipmobtest-Info.plist"; sourceTree = "<group>"; };
+		B1C0E36616110F450022AC87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B1C0E36816110F450022AC87 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B1C0E36A16110F450022AC87 /* hipmobtest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hipmobtest-Prefix.pch"; sourceTree = "<group>"; };
+		B1C0E36B16110F450022AC87 /* TestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAppDelegate.h; sourceTree = "<group>"; };
+		B1C0E36C16110F450022AC87 /* TestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAppDelegate.m; sourceTree = "<group>"; };
+		B1C0E36E16110F460022AC87 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B1C0E37016110F460022AC87 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B1C0E37216110F460022AC87 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B1C0E37416110F460022AC87 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		B1C0E37516110F460022AC87 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		B1C0E37816110F460022AC87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController_iPhone.xib; sourceTree = "<group>"; };
+		B1C0E37B16110F460022AC87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1C0E35516110F450022AC87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C0E35D16110F450022AC87 /* UIKit.framework in Frameworks */,
+				B1C0E35F16110F450022AC87 /* Foundation.framework in Frameworks */,
+				B1C0E36116110F450022AC87 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1C0E34D16110F450022AC87 = {
+			isa = PBXGroup;
+			children = (
+				B1C0E36216110F450022AC87 /* hipmobtest */,
+				B1C0E35B16110F450022AC87 /* Frameworks */,
+				B1C0E35916110F450022AC87 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1C0E35916110F450022AC87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1C0E35816110F450022AC87 /* hipmobtest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1C0E35B16110F450022AC87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1C0E35C16110F450022AC87 /* UIKit.framework */,
+				B1C0E35E16110F450022AC87 /* Foundation.framework */,
+				B1C0E36016110F450022AC87 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1C0E36216110F450022AC87 /* hipmobtest */ = {
+			isa = PBXGroup;
+			children = (
+				B1C0E36B16110F450022AC87 /* TestAppDelegate.h */,
+				B1C0E36C16110F450022AC87 /* TestAppDelegate.m */,
+				B1C0E37416110F460022AC87 /* TestViewController.h */,
+				B1C0E37516110F460022AC87 /* TestViewController.m */,
+				B1C0E37716110F460022AC87 /* TestViewController_iPhone.xib */,
+				B1C0E37A16110F460022AC87 /* TestViewController_iPad.xib */,
+				B1C0E36316110F450022AC87 /* Supporting Files */,
+			);
+			path = hipmobtest;
+			sourceTree = "<group>";
+		};
+		B1C0E36316110F450022AC87 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1C0E36416110F450022AC87 /* hipmobtest-Info.plist */,
+				B1C0E36516110F450022AC87 /* InfoPlist.strings */,
+				B1C0E36816110F450022AC87 /* main.m */,
+				B1C0E36A16110F450022AC87 /* hipmobtest-Prefix.pch */,
+				B1C0E36E16110F460022AC87 /* Default.png */,
+				B1C0E37016110F460022AC87 /* Default@2x.png */,
+				B1C0E37216110F460022AC87 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1C0E35716110F450022AC87 /* hipmobtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1C0E37F16110F460022AC87 /* Build configuration list for PBXNativeTarget "hipmobtest" */;
+			buildPhases = (
+				B1C0E35416110F450022AC87 /* Sources */,
+				B1C0E35516110F450022AC87 /* Frameworks */,
+				B1C0E35616110F450022AC87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hipmobtest;
+			productName = hipmobtest;
+			productReference = B1C0E35816110F450022AC87 /* hipmobtest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1C0E34F16110F450022AC87 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Test;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Orthogonal Labs, Inc.";
+			};
+			buildConfigurationList = B1C0E35216110F450022AC87 /* Build configuration list for PBXProject "hipmobtest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B1C0E34D16110F450022AC87;
+			productRefGroup = B1C0E35916110F450022AC87 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1C0E35716110F450022AC87 /* hipmobtest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1C0E35616110F450022AC87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C0E36716110F450022AC87 /* InfoPlist.strings in Resources */,
+				B1C0E36F16110F460022AC87 /* Default.png in Resources */,
+				B1C0E37116110F460022AC87 /* Default@2x.png in Resources */,
+				B1C0E37316110F460022AC87 /* Default-568h@2x.png in Resources */,
+				B1C0E37916110F460022AC87 /* TestViewController_iPhone.xib in Resources */,
+				B1C0E37C16110F460022AC87 /* TestViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1C0E35416110F450022AC87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C0E36916110F450022AC87 /* main.m in Sources */,
+				B1C0E36D16110F460022AC87 /* TestAppDelegate.m in Sources */,
+				B1C0E37616110F460022AC87 /* TestViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B1C0E36516110F450022AC87 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1C0E36616110F450022AC87 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B1C0E37716110F460022AC87 /* TestViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1C0E37816110F460022AC87 /* en */,
+			);
+			name = TestViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		B1C0E37A16110F460022AC87 /* TestViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1C0E37B16110F460022AC87 /* en */,
+			);
+			name = TestViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1C0E37D16110F460022AC87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1C0E37E16110F460022AC87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1C0E38016110F460022AC87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "hipmobtest/hipmobtest-Prefix.pch";
+				INFOPLIST_FILE = "hipmobtest/hipmobtest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B1C0E38116110F460022AC87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "hipmobtest/hipmobtest-Prefix.pch";
+				INFOPLIST_FILE = "hipmobtest/hipmobtest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1C0E35216110F450022AC87 /* Build configuration list for PBXProject "hipmobtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1C0E37D16110F460022AC87 /* Debug */,
+				B1C0E37E16110F460022AC87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1C0E37F16110F460022AC87 /* Build configuration list for PBXNativeTarget "hipmobtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1C0E38016110F460022AC87 /* Debug */,
+				B1C0E38116110F460022AC87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1C0E34F16110F450022AC87 /* Project object */;
+}
