@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#include <hipmob/hipmob.h>
 
 @interface TestViewController : UIViewController
+{
+    hipmob * iphonechat;
+    hipmobView * ipadchat;
+    BOOL display;
+}
+- (IBAction)openChat:(id)sender;
 
 @end
