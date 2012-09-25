@@ -107,18 +107,18 @@ extern NSString *const SRWebSocketErrorDomain;
 @class hipmobView;
 @class hipmobPopOver;
 @class hipmob;
-@protocol hipmobVCDelegate<NSObject>;
+@protocol hipmobViewDelegate<NSObject>;
 //delegate methods
 @optional
 //delegate call
 -(BOOL)launchURL:(NSString*)urlstring;
--(void)willDismissHipmobVCObject:(hipmobView*)hipmobObj;
+-(void)willDismissHipmobView:(hipmobView*)hipmobObj;
 -(BOOL)receivedMessageFromID:(NSString*)senderid;
 @end
 
 @interface hipmob : UIViewController < UINavigationControllerDelegate>
 
-@property (assign) id <hipmobVCDelegate> delegate;
+@property (assign) id <hipmobViewDelegate> delegate;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *useremail;
 @property (nonatomic, retain) NSString *localdeviceid;
@@ -129,7 +129,7 @@ extern NSString *const SRWebSocketErrorDomain;
 @property (nonatomic, retain) NSString *peertoken;
 
 -(void)sendUpdate:(NSString*)variable withStatus:(NSString *)status;
--(void) setAvailibilityStatus:(BOOL)display;
+-(void) setAvailabilityStatus:(BOOL)display;
 
 -(id) initWithAppID:(NSString *)appidentifier;
 -(id) initWithAppID:(NSString *)appidentifier andTitle:(NSString*)newtitle;
@@ -162,12 +162,12 @@ typedef enum  {
     NSMutableDictionary *info;
     NSMutableDictionary *statusmessages;
     NSMutableArray *messages;
-    id <hipmobVCDelegate> delegate;
+    id <hipmobViewDelegate> delegate;
     
 }
 @property (nonatomic, assign) NSMutableDictionary *info;
 @property (assign) id<hipmobStaticDelegate>staticdelegate;
-@property (assign) id <hipmobVCDelegate> delegate;
+@property (assign) id <hipmobViewDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *messages;
 @property (nonatomic, assign) NSMutableDictionary *statusmessages;
 -(BOOL) connectToHipmob;
@@ -190,7 +190,7 @@ typedef enum  {
     NSString *peerdeviceid;
     NSString *peertoken;
     
-    id <hipmobVCDelegate> delegate;
+    id <hipmobViewDelegate> delegate;
 }
 @property (nonatomic, assign) BOOL localWebView;
 @property (nonatomic, retain) NSString *username;
@@ -202,8 +202,8 @@ typedef enum  {
 @property (nonatomic, retain) NSString *peertoken;
 -(void)sendUpdate:(NSString*)variable withStatus:(NSString *)status;
 
--(void) setAvailibilityStatus:(BOOL)display;
-@property(nonatomic, retain) id <hipmobVCDelegate>delegate;
+-(void) setAvailabilityStatus:(BOOL)display;
+@property(nonatomic, retain) id <hipmobViewDelegate>delegate;
 -(id) initWithAppID:(NSString *)appidentifier;
 -(id) initWithAppID:(NSString *)appidentifier andTitle:(NSString*)newtitle;
 @end
