@@ -1,10 +1,12 @@
 //
-//  HMPopoverController.h
+//  HMChatPopoverController.h
 //  hipmob
 //
 //  Created by Olufemi Omojola on 6/1/13.
 //  Copyright (c) 2012 - 2013 Orthogonal Labs, Inc.
 //
+#ifndef _hipmob_hmchatpopovercontroller_h_
+#define _hipmob_hmchatpopovercontroller_h_
 
 #import <UIKit/UIKit.h>
 #import "HMChatViewController.h"
@@ -29,7 +31,7 @@
 /**
  * Provides a popover controller for use in tablet displays.
  */
-@interface HMChatPopoverController : UIPopoverController<UIPopoverControllerDelegate>
+@interface HMChatPopoverController : UIPopoverController
 {
     HMChatViewController * content;
 }
@@ -54,7 +56,7 @@
 /** Initializes the HMChatPopoverController object to connect with a specific Hipmob app identifier. By default
  * support messages will be shown (messages sent to/from the Hipmob app's operators).
  *
- * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
+ * The application identifier can be obtained from [https://manage.hipmob.com/#apps](https://manage.hipmob.com/#apps) and will
  * let the Hipmob communication network identify which set of operators, users and other resources
  * to use for this connection. Typically there will be one application identifier for each app.
  * After this call a private connection will be made to the Hipmob communication network for this
@@ -69,7 +71,7 @@
 /** Initializes the HMChatPopoverController object to connect with a specific Hipmob app identifier. By default
  * support messages will be shown (messages sent to/from the Hipmob app's operators).
  *
- * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
+ * The application identifier can be obtained from [https://manage.hipmob.com/#apps](https://manage.hipmob.com/#apps) and will
  * let the Hipmob communication network identify which set of operators, users and other resources
  * to use for this connection. Typically there will be one application identifier for each app.
  * After this call a private connection will be made to the Hipmob communication network for this
@@ -86,7 +88,7 @@
 /** Initializes the HMChatPopoverController object to connect with a specific Hipmob app identifier and to show
  * messages to/from a specific peer.
  *
- * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
+ * The application identifier can be obtained from [https://manage.hipmob.com/#apps](https://manage.hipmob.com/#apps) and will
  * let the Hipmob communication network identify which set of operators, users and other resources
  * to use for this connection. Typically there will be one application identifier for each app.
  * After this call a private connection will be made to the Hipmob communication network for this
@@ -114,12 +116,6 @@
  */
 -(void) setLandscapePosition:(CGRect)newLandscape;
 
-/** Sets the size of the popover.
- *
- * @param newSize The new size of the popover.
- */
--(void) setSize:(CGSize)newSize;
-
 ///------------------------------------------------------------------------------------------
 /// @name Display Control
 ///------------------------------------------------------------------------------------------
@@ -129,7 +125,8 @@
 -(void) show;
 
 /**
- * Hides the popover: this will disconnect the chat and release it.
+ * Disconnects the chat and hides the popover. The parent controller should release the HMChatPopoverController instance: it can not be shown again.
  */
 -(void) dismiss;
 @end
+#endif

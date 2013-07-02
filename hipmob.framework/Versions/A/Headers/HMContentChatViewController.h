@@ -1,63 +1,63 @@
 //
-//  HMChatViewController.h
+//  HMContentChatViewController.h
 //  hipmob
 //
 //  Created by Olufemi Omojola on 6/1/13.
 //  Copyright (c) 2012 - 2013 Orthogonal Labs, Inc.
 //
-#ifndef _hipmob_hmchatviewcontroller_h_
-#define _hipmob_hmchatviewcontroller_h_
+#ifndef _hipmob_hmcontentchatviewcontroller_h_
+#define _hipmob_hmcontentchatviewcontroller_h_
 
 #import <UIKit/UIKit.h>
 #import "HMChatView.h"
 
-/** The HMChatViewControllerDelegate protocol defines the optional methods implemented by delegates of HMChatViewController instances. This is largely a wrapper around the internal HMChatView instance, with a number of helpful extras thrown in.
+/** The HMContentChatViewControllerDelegate protocol defines the optional methods implemented by delegates of HMContentChatViewController instances. This is largely a wrapper around the internal HMChatView instance, with a number of helpful extras thrown in.
  *
  * The delegate will be notified when a URL is received.
  * All methods are optional
  */
-@protocol HMChatViewControllerDelegate <NSObject>;
+@protocol HMContentChatViewControllerDelegate <NSObject>;
 
 @optional
 /** Tells the delegate that a URL was pushed from the server. The delegate may choose to handle the URL itself: if it does, it should
- * return YES. If the delegate does not implement this method or if it returns NO (i.e. it either does not handle
+ * return TRUE or YES. If the delegate does not implement this method or if it returns FALSE or NO (i.e. it either does not handle
  * URLs of this format or if it doesn't want to implement any special logic) then the URL will be opened in either an internal WebView OR the platform browser (i.e. Safari) depending on the value of the shouldUseSystemBrowser property.
  *
- * @param chatViewController The HMChatViewController instance that received the URL.
+ * @param contentChatViewController The HMContentChatViewController instance that received the URL.
  * @param url The URL that was received.
  * @param messageId The id of the message that contained the URL. If you have the delegate associated with multiple chat view instances then you may receive multiple calls: you can use the messageId to ensure you only take action a single time.
  * @result TRUE If the delegate handled the URL, FALSE otherwise.
  */
--(BOOL)chatViewController:(id)chatViewController willHandleURL:(NSString*)url messageId:(NSString*)messageId;
+-(BOOL)contentChatViewController:(id)contentChatViewController willHandleURL:(NSString*)url messageId:(NSString*)messageId;
 
 /**
  * Tells the delegate that an error occured in the underlying chat view.
  *
- * @param chatViewController The HMChatViewController instance that received the error.
+ * @param contentChatViewController The HMContentChatViewController instance that received the error.
  * @param error The error message that occured.
  */
--(void)chatViewController:(id)chatViewController didErrorOccur:(NSString *)error;
+-(void)contentChatViewController:(id)contentChatViewController didErrorOccur:(NSString *)error;
 
 /**
  * Tells the delegate that a message we care about was received.
  *
- * @param chatViewController The HMChatViewController instance that received the error.
+ * @param contentChatViewController The HMContentChatViewController instance that received the error.
  * @param message The message that was received.
  */
--(void)chatViewController:(id)chatViewController didReceiveMessage:(HMChatMessage *)message;
+-(void)contentChatViewController:(id)contentChatViewController didReceiveMessage:(HMChatMessage *)message;
 
 /**
  * Tells the delegate that the view controller is closing.
  *
- * @param chatViewController The HMChatViewController instance that is closing.
+ * @param contentChatViewController The HMContentChatViewController instance that is closing.
  */
--(void)chatViewControllerWillDismiss:(id)chatViewController;
+-(void)contentChatViewControllerWillDismiss:(id)contentChatViewController;
 @end
 
 /**
  * Provides a simple UIViewController that renders a full-screen chat window.
  */
-@interface HMChatViewController : UINavigationController <HMChatViewDelegate, UIGestureRecognizerDelegate>
+@interface HMContentChatViewController : UIViewController <HMChatViewDelegate, UIGestureRecognizerDelegate>
 {
     HMChatView * chatView;
 }
@@ -71,12 +71,6 @@
  * Returns the status indicator that shows online/offline. This can then be hidden.
  */
 @property (readonly, nonatomic, retain) UIView * statusView;
-
-/**
- * Returns the UIViewController that contains the chatView. This can be used to customize
- * the bar.
- */
-@property (readonly, nonatomic, retain) UIViewController * body;
 
 /**
  * Set to YES to have the controller open URLs in an external browser. By default URLs are opened in a web view presented in a view controller (defaults to NO).
@@ -103,14 +97,14 @@
  */
 @property (nonatomic, assign) BOOL disableKeyboardAdjustment;
 
-/** The HMChatViewControllerDelegate for this chat view.
+/** The HMContentChatViewControllerDelegate for this chat view.
  */
-@property (assign) id<HMChatViewControllerDelegate> chatDelegate;
+@property (assign) id<HMContentChatViewControllerDelegate> chatDelegate;
 
 ///------------------------------------------------------------------------------------------
 /// @name Initialization
 ///------------------------------------------------------------------------------------------
-/** Initializes the HMChatViewController object to connect with a specific Hipmob app identifier. By default
+/** Initializes the HMContentChatViewController object to connect with a specific Hipmob app identifier. By default
  * support messages will be shown (messages sent to/from the Hipmob app's operators).
  *
  * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
@@ -124,7 +118,7 @@
  */
 -(id) initWithAppID:(NSString *)appid andUser:(NSString *)user;
 
-/** Initializes the HMChatViewController object to connect with a specific Hipmob app identifier. By default
+/** Initializes the HMContentChatViewController object to connect with a specific Hipmob app identifier. By default
  * support messages will be shown (messages sent to/from the Hipmob app's operators).
  *
  * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
@@ -140,7 +134,7 @@
  */
 -(id) initWithAppID:(NSString *)appid andUser:(NSString *)user andInfo:(NSDictionary *)info;
 
-/** Initializes the HMChatViewController object to connect with a specific Hipmob app identifier and to show
+/** Initializes the HMContentChatViewController object to connect with a specific Hipmob app identifier and to show
  * messages to/from a specific peer.
  *
  * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
@@ -176,22 +170,6 @@
  * @result TRUE if the chat is connected, false otherwise.
  */
 -(BOOL) isConnected;
-
-///------------------------------------------------------------------------------------------
-/// @name Utilities
-///------------------------------------------------------------------------------------------
-/** Opens up the specified URL in an embedded UIWebView.
- *
- * @param url The URL to open.
- */
--(void)view:(NSString *)url;
-
-/** Opens up the specified URL in an embedded UIWebView.
- *
- * @param url The URL to open.
- * @param title The title for the web view.
- */
--(void)view:(NSString *)url withTitle:(NSString *)title;
 
 /** Notifies the delegate that a close has been requested.
  *

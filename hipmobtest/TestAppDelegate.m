@@ -11,7 +11,6 @@
 #import "TestViewController.h"
 
 @implementation TestAppDelegate
-
 - (void)dealloc
 {
     [_window release];
@@ -30,7 +29,27 @@
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    // and, push notification registration and setup
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)tokenValue {
+    // save the token: we'll need it for the Hipmob usage later
+    [(TestViewController *)self.viewController setToken:[NSData dataWithData:tokenValue]];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Error in registration: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

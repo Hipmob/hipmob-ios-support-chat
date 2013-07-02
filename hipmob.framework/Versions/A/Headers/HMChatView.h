@@ -5,8 +5,8 @@
 //  Created by Olufemi Omojola on 6/1/13.
 //  Copyright (c) 2012 - 2013 Orthogonal Labs, Inc.
 //
-#ifndef _HMChatView_h
-#define _HMChatView_h
+#ifndef _hipmob_hmchatview_h_
+#define _hipmob_hmchatview_h_
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
@@ -17,6 +17,28 @@
 @class HMChatMessage;
 @protocol HMRemoteConnectionDelegate;
 
+/**
+ * The HMChatViewAvailabilityCheckDelegate protocol supports a simple callback that allows an application to check if any operators are available for the associated Hipmob application. This can be used to show/hide the live chat button based on operator availability.
+ */
+@protocol HMChatViewAvailabilityCheckDelegate <NSObject>;
+@required
+/**
+ * Tells the delegate that one or more chat operators are available for a specified app. An HTTP call is made to the Hipmob availability API and the
+ * result of the call is returned.
+ *
+ * @param app The Hipmob application ID for which operator(s) are available.
+ */
+-(void)operatorAvailable:(NSString *)app;
+
+/**
+ * Tells the delegate that no chat operators are available for a specified app. An HTTP call is made to the Hipmob availability API and the
+ * result of the call is returned.
+ *
+ * @param app The Hipmob application ID for which operator(s) are not available.
+ */
+-(void)operatorOffline:(NSString *)app;
+@end
+ 
 /** The HMChatViewDelegate protocol defines the required and optional methods implemented by delegates of HMChatView instances.
  *
  * The delegate will be notified when a URL is received, and will be notified when the view is being dismissed.
@@ -53,6 +75,7 @@
  * owner may perform some additional notification.
  *
  * @param chatView The HMChatView instance that received the message.
+ * @param message The HMChatMessage instance that was received.
  */
 -(void)chatView:(id)chatView didReceiveMessage:(HMChatMessage *)message;
 
@@ -349,6 +372,15 @@
  */
 -(void) disconnect;
 
+///------------------------------------------------------------------------------------------
+/// @name Utilities
+///------------------------------------------------------------------------------------------
+/** Checks to see whether or not a chat operator is available for a specific Hipmob application ID. An HTTP call is made to the Hipmob availability API and the result of the call is returned via the delegate.
+ *
+ * @param appid The Hipmob application ID to check.
+ * @param observer The HMChatAvailabilityCheckDelegate to return the response to.
+ */
++(void) checkOperatorAvailabilityForApp:(NSString *)appid andNotify:(id<HMChatViewAvailabilityCheckDelegate>)observer;
 @end
 #endif
 

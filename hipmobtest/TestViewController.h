@@ -8,12 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #include <hipmob/HMChatViewController.h>
+#include <hipmob/HMContentChatViewController.h>
+#include <hipmob/HMChatPopoverController.h>
 
-@interface TestViewController : UIViewController
+@interface TestViewController : UIViewController <UIWebViewDelegate, UIPopoverControllerDelegate, HMChatViewControllerDelegate, HMChatViewAvailabilityCheckDelegate>
 {
     HMChatViewController * livechat;
+    HMContentChatViewController * livechat2;
+    HMChatPopoverController * livechatpopover;
     BOOL display;
 }
 - (IBAction)openChat:(id)sender;
+
+@property (retain, nonatomic) IBOutlet UINavigationBar *navBar;
+
+-(void)setToken:(NSData *)data;
 
 @end
