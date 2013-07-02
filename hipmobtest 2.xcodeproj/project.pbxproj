@@ -30,21 +30,22 @@
 		B1C0E35D16110F450022AC87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0E35C16110F450022AC87 /* UIKit.framework */; };
 		B1C0E35F16110F450022AC87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0E35E16110F450022AC87 /* Foundation.framework */; };
 		B1C0E36116110F450022AC87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C0E36016110F450022AC87 /* CoreGraphics.framework */; };
-		B1C0E36716110F450022AC87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E36516110F450022AC87 /* InfoPlist.strings */; };
-		B1C0E36916110F450022AC87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0E36816110F450022AC87 /* main.m */; };
-		B1C0E36D16110F460022AC87 /* TestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0E36C16110F450022AC87 /* TestAppDelegate.m */; };
-		B1C0E36F16110F460022AC87 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E36E16110F460022AC87 /* Default.png */; };
-		B1C0E37116110F460022AC87 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37016110F460022AC87 /* Default@2x.png */; };
-		B1C0E37316110F460022AC87 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37216110F460022AC87 /* Default-568h@2x.png */; };
-		B1C0E37616110F460022AC87 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0E37516110F460022AC87 /* TestViewController.m */; };
-		B1C0E37916110F460022AC87 /* TestViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37716110F460022AC87 /* TestViewController_iPhone.xib */; };
-		B1C0E37C16110F460022AC87 /* TestViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E37A16110F460022AC87 /* TestViewController_iPad.xib */; };
 		B1C0E456161175B40022AC87 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E450161175B40022AC87 /* Icon-72.png */; };
 		B1C0E457161175B40022AC87 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E451161175B40022AC87 /* Icon-Small-50.png */; };
 		B1C0E458161175B40022AC87 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E452161175B40022AC87 /* Icon-Small.png */; };
 		B1C0E459161175B40022AC87 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E453161175B40022AC87 /* Icon-Small@2x.png */; };
 		B1C0E45A161175B40022AC87 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E454161175B40022AC87 /* Icon.png */; };
 		B1C0E45B161175B40022AC87 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C0E455161175B40022AC87 /* Icon@2x.png */; };
+		B1C903051783843800929765 /* TestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C903021783843800929765 /* TestAppDelegate.m */; };
+		B1C903061783843800929765 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C903041783843800929765 /* TestViewController.m */; };
+		B1C90325178384E300929765 /* TestViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C90321178384E300929765 /* TestViewController_iPad.xib */; };
+		B1C90326178384E300929765 /* TestViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1C90323178384E300929765 /* TestViewController_iPhone.xib */; };
+		B1C9032A1783852500929765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C903291783852500929765 /* main.m */; };
+		B1C903331783855700929765 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C9032C1783855700929765 /* Default-568h@2x.png */; };
+		B1C903341783855700929765 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C9032D1783855700929765 /* Default.png */; };
+		B1C903351783855700929765 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C9032E1783855700929765 /* Default@2x.png */; };
+		B1C903361783855700929765 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1C9032F1783855700929765 /* InfoPlist.strings */; };
+		B1C903371783855700929765 /* hipmobtest 2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1C903311783855700929765 /* hipmobtest 2-Info.plist */; };
 		B1FD2A4A177A508A00D76F3C /* hipmob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD2A49177A508A00D76F3C /* hipmob.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,25 +90,25 @@
 		B1C0E35C16110F450022AC87 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B1C0E35E16110F450022AC87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B1C0E36016110F450022AC87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B1C0E36416110F450022AC87 /* hipmobtest 2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hipmobtest 2-Info.plist"; sourceTree = "<group>"; };
-		B1C0E36616110F450022AC87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B1C0E36816110F450022AC87 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B1C0E36A16110F450022AC87 /* hipmobtest 2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hipmobtest 2-Prefix.pch"; sourceTree = "<group>"; };
-		B1C0E36B16110F450022AC87 /* TestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAppDelegate.h; sourceTree = "<group>"; };
-		B1C0E36C16110F450022AC87 /* TestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAppDelegate.m; sourceTree = "<group>"; };
-		B1C0E36E16110F460022AC87 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		B1C0E37016110F460022AC87 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		B1C0E37216110F460022AC87 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		B1C0E37416110F460022AC87 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		B1C0E37516110F460022AC87 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		B1C0E37816110F460022AC87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController_iPhone.xib; sourceTree = "<group>"; };
-		B1C0E37B16110F460022AC87 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController_iPad.xib; sourceTree = "<group>"; };
 		B1C0E450161175B40022AC87 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "hipmobtest/Icons/Icon-72.png"; sourceTree = "<group>"; };
 		B1C0E451161175B40022AC87 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "hipmobtest/Icons/Icon-Small-50.png"; sourceTree = "<group>"; };
 		B1C0E452161175B40022AC87 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "hipmobtest/Icons/Icon-Small.png"; sourceTree = "<group>"; };
 		B1C0E453161175B40022AC87 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "hipmobtest/Icons/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		B1C0E454161175B40022AC87 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = hipmobtest/Icons/Icon.png; sourceTree = "<group>"; };
 		B1C0E455161175B40022AC87 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "hipmobtest/Icons/Icon@2x.png"; sourceTree = "<group>"; };
+		B1C903011783843800929765 /* TestAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAppDelegate.h; sourceTree = "<group>"; };
+		B1C903021783843800929765 /* TestAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAppDelegate.m; sourceTree = "<group>"; };
+		B1C903031783843800929765 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		B1C903041783843800929765 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		B1C90322178384E300929765 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController_iPad.xib; sourceTree = "<group>"; };
+		B1C90324178384E300929765 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController_iPhone.xib; sourceTree = "<group>"; };
+		B1C903291783852500929765 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B1C9032C1783855700929765 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B1C9032D1783855700929765 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B1C9032E1783855700929765 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B1C903301783855700929765 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B1C903311783855700929765 /* hipmobtest 2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "hipmobtest 2-Info.plist"; sourceTree = "<group>"; };
+		B1C903321783855700929765 /* hipmobtest 2-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "hipmobtest 2-Prefix.pch"; sourceTree = "<group>"; };
 		B1FD2A49177A508A00D76F3C /* hipmob.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = hipmob.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,7 +186,7 @@
 				B1C0E453161175B40022AC87 /* Icon-Small@2x.png */,
 				B1C0E454161175B40022AC87 /* Icon.png */,
 				B1C0E455161175B40022AC87 /* Icon@2x.png */,
-				B1C0E36216110F450022AC87 /* hipmobtest */,
+				B1C0E36216110F450022AC87 /* Classes */,
 				B1C0E35B16110F450022AC87 /* Frameworks */,
 				B1C0E35916110F450022AC87 /* Products */,
 			);
@@ -209,32 +210,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B1C0E36216110F450022AC87 /* hipmobtest */ = {
+		B1C0E36216110F450022AC87 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B1C0E36B16110F450022AC87 /* TestAppDelegate.h */,
-				B1C0E36C16110F450022AC87 /* TestAppDelegate.m */,
-				B1C0E37416110F460022AC87 /* TestViewController.h */,
-				B1C0E37516110F460022AC87 /* TestViewController.m */,
-				B1C0E37716110F460022AC87 /* TestViewController_iPhone.xib */,
-				B1C0E37A16110F460022AC87 /* TestViewController_iPad.xib */,
-				B1C0E36316110F450022AC87 /* Supporting Files */,
+				B1C9032B1783853A00929765 /* Support */,
+				B1C90321178384E300929765 /* TestViewController_iPad.xib */,
+				B1C90323178384E300929765 /* TestViewController_iPhone.xib */,
+				B1C903011783843800929765 /* TestAppDelegate.h */,
+				B1C903021783843800929765 /* TestAppDelegate.m */,
+				B1C903031783843800929765 /* TestViewController.h */,
+				B1C903041783843800929765 /* TestViewController.m */,
 			);
+			name = Classes;
 			path = hipmobtest;
 			sourceTree = "<group>";
 		};
-		B1C0E36316110F450022AC87 /* Supporting Files */ = {
+		B1C9032B1783853A00929765 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				B1C0E36416110F450022AC87 /* hipmobtest 2-Info.plist */,
-				B1C0E36516110F450022AC87 /* InfoPlist.strings */,
-				B1C0E36816110F450022AC87 /* main.m */,
-				B1C0E36A16110F450022AC87 /* hipmobtest 2-Prefix.pch */,
-				B1C0E36E16110F460022AC87 /* Default.png */,
-				B1C0E37016110F460022AC87 /* Default@2x.png */,
-				B1C0E37216110F460022AC87 /* Default-568h@2x.png */,
+				B1C9032C1783855700929765 /* Default-568h@2x.png */,
+				B1C9032D1783855700929765 /* Default.png */,
+				B1C9032E1783855700929765 /* Default@2x.png */,
+				B1C9032F1783855700929765 /* InfoPlist.strings */,
+				B1C903311783855700929765 /* hipmobtest 2-Info.plist */,
+				B1C903321783855700929765 /* hipmobtest 2-Prefix.pch */,
+				B1C903291783852500929765 /* main.m */,
 			);
-			name = "Supporting Files";
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,12 +313,13 @@
 				B1C0E459161175B40022AC87 /* Icon-Small@2x.png in Resources */,
 				B1C0E45A161175B40022AC87 /* Icon.png in Resources */,
 				B1C0E45B161175B40022AC87 /* Icon@2x.png in Resources */,
-				B1C0E36716110F450022AC87 /* InfoPlist.strings in Resources */,
-				B1C0E36F16110F460022AC87 /* Default.png in Resources */,
-				B1C0E37116110F460022AC87 /* Default@2x.png in Resources */,
-				B1C0E37316110F460022AC87 /* Default-568h@2x.png in Resources */,
-				B1C0E37916110F460022AC87 /* TestViewController_iPhone.xib in Resources */,
-				B1C0E37C16110F460022AC87 /* TestViewController_iPad.xib in Resources */,
+				B1C90325178384E300929765 /* TestViewController_iPad.xib in Resources */,
+				B1C90326178384E300929765 /* TestViewController_iPhone.xib in Resources */,
+				B1C903331783855700929765 /* Default-568h@2x.png in Resources */,
+				B1C903341783855700929765 /* Default.png in Resources */,
+				B1C903351783855700929765 /* Default@2x.png in Resources */,
+				B1C903361783855700929765 /* InfoPlist.strings in Resources */,
+				B1C903371783855700929765 /* hipmobtest 2-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,37 +330,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1C0E36916110F450022AC87 /* main.m in Sources */,
-				B1C0E36D16110F460022AC87 /* TestAppDelegate.m in Sources */,
-				B1C0E37616110F460022AC87 /* TestViewController.m in Sources */,
+				B1C903051783843800929765 /* TestAppDelegate.m in Sources */,
+				B1C903061783843800929765 /* TestViewController.m in Sources */,
+				B1C9032A1783852500929765 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B1C0E36516110F450022AC87 /* InfoPlist.strings */ = {
+		B1C90321178384E300929765 /* TestViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B1C0E36616110F450022AC87 /* en */,
+				B1C90322178384E300929765 /* en */,
 			);
-			name = InfoPlist.strings;
+			name = TestViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
-		B1C0E37716110F460022AC87 /* TestViewController_iPhone.xib */ = {
+		B1C90323178384E300929765 /* TestViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B1C0E37816110F460022AC87 /* en */,
+				B1C90324178384E300929765 /* en */,
 			);
 			name = TestViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
-		B1C0E37A16110F460022AC87 /* TestViewController_iPad.xib */ = {
+		B1C9032F1783855700929765 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B1C0E37B16110F460022AC87 /* en */,
+				B1C903301783855700929765 /* en */,
 			);
-			name = TestViewController_iPad.xib;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -419,6 +422,7 @@
 		B1C0E38016110F460022AC87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Olufemi Omojola (3H467Y8V9G)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,6 +446,7 @@
 		B1C0E38116110F460022AC87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Olufemi Omojola (3H467Y8V9G)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

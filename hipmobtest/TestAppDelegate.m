@@ -11,15 +11,27 @@
 #import "TestViewController.h"
 
 @implementation TestAppDelegate
+#if !__has_feature(objc_arc)
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
     [super dealloc];
 }
+#endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Check if ARC is enabled: if it is, don't bother with the release/retain bits
+#if __has_feature(objc_arc)
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.viewController = [[TestViewController alloc] initWithNibName:@"TestViewController_iPhone" bundle:nil];
+    } else {
+        self.viewController = [[TestViewController alloc] initWithNibName:@"TestViewController_iPad" bundle:nil];
+    }
+#else
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -27,6 +39,8 @@
     } else {
         self.viewController = [[[TestViewController alloc] initWithNibName:@"TestViewController_iPad" bundle:nil] autorelease];
     }
+#endif
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     

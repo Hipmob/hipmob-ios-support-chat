@@ -21,7 +21,9 @@
 @implementation TestViewController
 -(void)setToken:(NSData *)data
 {
+#if !__has_feature(objc_arc)
     token = [data retain];
+#endif
 }
 
 - (void)viewDidLoad
@@ -33,8 +35,12 @@
     display= NO;
     activity = (UIActivityIndicatorView *)[self.view viewWithTag:201];
     mainWebView = (UIWebView *)[self.view viewWithTag:200];
-    mainWebView.delegate=self;
-    currenturl = [[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://web.mit.edu"]] retain];
+    mainWebView.delegate = self;
+    
+    currenturl = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://web.mit.edu"]];
+#if !__has_feature(objc_arc)
+    [currenturl retain];
+#endif
     [self gotoURL:nil];
 }
 
@@ -66,6 +72,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#if __has_feature(objc_arc)
 - (IBAction)openChat:(id)sender {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         // iPhone
@@ -89,16 +96,54 @@
         livechat.chatDelegate = self;
         display = YES;
         [self presentModalViewController:livechat animated:YES];
-        // */
-        /*
-        livechat2 = [[HMContentChatViewController alloc] initWithAppID:@"2ea7d86854df4ca185af84e68ea72fe1" andUser:nil];
-        livechat2.title = @"Support Chat";
-        livechat2.chatView.maxInputLines = 4;
-        livechat2.chatView.placeholder = @"How can we help?";
-        livechat2.chatView.placeholderColor = [UIColor grayColor];
-        livechat2.shouldUseSystemBrowser = FALSE;
-        [self presentModalViewController:livechat2 animated:YES];
-        // */
+    } else {
+        if(!display){
+            livechatpopover = [[HMChatPopoverController alloc] initWithView:(UIView *)sender andAppID:@"2ea7d86854df4ca185af84e68ea72fe1" andUser:nil];
+            livechatpopover.content.navigationBar.tintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
+            livechatpopover.content.title = @"Support Chat";
+            livechatpopover.content.chatView.maxInputLines = 4;
+            livechatpopover.content.chatView.placeholder = @"Start chatting";
+            livechatpopover.content.chatView.placeholderColor = [UIColor grayColor];
+            livechatpopover.content.contentSizeForViewInPopover = CGSizeMake(320, 240);
+            livechatpopover.passthroughViews = [[NSArray alloc] initWithObjects:self.view, nil];            
+            if(currenturl != nil){
+                // set the context: this tells the operator what page we're looking at
+                [livechatpopover.content.chatView updateContext:[[currenturl URL] absoluteString]];
+            }
+
+            livechatpopover.content.chatDelegate = self;
+            if(token){
+                [livechatpopover.content.chatView setPushToken:token];
+            }
+            [livechatpopover presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            display = YES;
+        }
+    }
+}
+#else
+- (IBAction)openChat:(id)sender {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        // iPhone
+        
+        ///*
+        livechat = [[HMChatViewController alloc] initWithAppID:@"2ea7d86854df4ca185af84e68ea72fe1" andUser:nil];
+        livechat.navigationBar.tintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
+        livechat.body.title = @"Support Chat";
+        livechat.chatView.maxInputLines = 4;
+        livechat.chatView.placeholder = @"Start chatting";
+        livechat.chatView.placeholderColor = [UIColor grayColor];
+        livechat.shouldUseSystemBrowser = FALSE;
+        
+        if(currenturl != nil){
+            // set the context: this tells the operator what page we're looking at
+            [livechat.chatView updateContext:[[currenturl URL] absoluteString]];
+        }
+        if(token){
+            [livechat.chatView setPushToken:token];
+        }
+        livechat.chatDelegate = self;
+        display = YES;
+        [self presentModalViewController:livechat animated:YES];
     } else {
         if(!display){
             livechatpopover = [[HMChatPopoverController alloc] initWithView:(UIView *)sender andAppID:@"2ea7d86854df4ca185af84e68ea72fe1" andUser:nil];
@@ -114,10 +159,7 @@
                 // set the context: this tells the operator what page we're looking at
                 [livechatpopover.content.chatView updateContext:[[currenturl URL] absoluteString]];
             }
-
-            /*
-            [livechatpopover presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-             */
+            
             livechatpopover.content.chatDelegate = self;
             if(token){
                 [livechatpopover.content.chatView setPushToken:token];
@@ -127,6 +169,7 @@
         }
     }
 }
+#endif
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -136,6 +179,7 @@
     }
 }
 
+#if !__has_feature(objc_arc)
 - (void)dealloc {
     if (currenturl){
         [currenturl release];
@@ -148,6 +192,7 @@
     [_navBar release];
     [super dealloc];
 }
+#endif
 
 -(void)stopAnimator{
     [activity stopAnimating];
@@ -163,8 +208,12 @@
     // check to see if we've navigated to a new page, and if we have report the new URL back to the
     // operator so they know what we're looking at.
     if(![[[currenturl URL] absoluteString] isEqualToString:[[webView.request URL] absoluteString]]){
+#if __has_feature(objc_arc)
+        currenturl = [webView.request copy];
+#else
         [currenturl release];
         currenturl = [[webView.request copy] retain];
+#endif
         
         if(livechatpopover){
             [livechatpopover.content.chatView updateContext:[NSString stringWithFormat:@"viewing %@ (%@)",
@@ -180,7 +229,9 @@
 {
     display = NO;
     if(livechatpopover){
+#if !__has_feature(objc_arc)
         [livechatpopover release];
+#endif
         livechatpopover = nil;
     }
 }
@@ -195,12 +246,16 @@
     display = NO;
     if(livechatpopover){
         if(livechatpopover.content == chatViewController){
+#if !__has_feature(objc_arc)
             [livechatpopover release];
+#endif
             livechatpopover = nil;
         }
     }else if(livechat){
         if(livechat == chatViewController){
+#if !__has_feature(objc_arc)
             [livechat release];
+#endif
             livechat = nil;
         }
     }
@@ -208,11 +263,15 @@
 
 -(BOOL)chatViewController:(id)chatViewController willHandleURL:(NSString*)url messageId:(NSString*)messageId
 {
+    // Check if ARC is enabled: if it is, don't bother with the release/retain bits
+#if !__has_feature(objc_arc)
     [currenturl release];
+#endif
     currenturl = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [self gotoURL:nil];
     return YES;
 }
+
 - (void)viewDidUnload {
     [self setNavBar:nil];
     [super viewDidUnload];
