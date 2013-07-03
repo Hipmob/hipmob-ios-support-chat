@@ -48,6 +48,16 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    // see if we launched from a Hipmob push notifications
+    if([launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey]){
+        // came from a push
+        NSDictionary * userInfo = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if([@"com.hipmob.push.NEW_MESSAGE" isEqualToString:(NSString *)[userInfo valueForKey:@"action"]]){
+            [(TestViewController *)self.viewController setMessageWaitingIndicator:[(NSDictionary *)[userInfo valueForKey:@"aps"] valueForKey:@"badge"]];
+        }
+    }
+    
     return YES;
 }
 
@@ -63,7 +73,9 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    
+    if([@"com.hipmob.push.NEW_MESSAGE" isEqualToString:(NSString *)[userInfo valueForKey:@"action"]]){
+        [(TestViewController *)self.viewController setMessageWaitingIndicator:[(NSDictionary *)[userInfo valueForKey:@"aps"] valueForKey:@"badge"]];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

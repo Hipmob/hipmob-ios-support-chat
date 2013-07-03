@@ -19,10 +19,19 @@
 @end
 
 @implementation TestViewController
+
+-(void)setMessageWaitingIndicator:(NSObject *)indicator
+{
+    _navBar.topItem.rightBarButtonItem.title = [NSString stringWithFormat:@"Chat (%@)", indicator, nil];
+}
+
 -(void)setToken:(NSData *)data
 {
 #if !__has_feature(objc_arc)
+    if(token) [token release];
     token = [data retain];
+#else
+    token = data;
 #endif
 }
 
@@ -74,6 +83,7 @@
 
 #if __has_feature(objc_arc)
 - (IBAction)openChat:(id)sender {
+    _navBar.topItem.rightBarButtonItem.title = @"Chat";
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         // iPhone
         

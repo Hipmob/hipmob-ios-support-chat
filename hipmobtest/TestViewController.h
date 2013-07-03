@@ -23,5 +23,6 @@
 @property (retain, nonatomic) IBOutlet UINavigationBar *navBar;
 
 -(void)setToken:(NSData *)data;
+-(void)setMessageWaitingIndicator:(NSObject *)indicator;
 
 @end
