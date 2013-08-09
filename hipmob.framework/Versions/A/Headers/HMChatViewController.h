@@ -193,8 +193,8 @@
  */
 -(void)view:(NSString *)url withTitle:(NSString *)title;
 
-/** Notifies the delegate that a close has been requested.
- *
+/**
+ * Notifies the controller that a close has been requested (used in the popover controller).
  */
 -(void)closeRequested;
 @end

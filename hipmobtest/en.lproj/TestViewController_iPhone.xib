@@ -50,10 +50,9 @@
 						<array key="IBUIItems">
 							<object class="IBUINavigationItem" id="378428558">
 								<reference key="IBUINavigationBar" ref="599262249"/>
-								<string key="IBUITitle"/>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="592145928">
 									<int key="IBUITag">202</int>
-									<string key="IBUITitle">Chat</string>
+									<string key="IBUITitle">Help</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="378428558"/>
@@ -83,6 +82,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{142, 277}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">201</int>
@@ -139,15 +139,15 @@
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="599262249"/>
 					</object>
-					<int key="connectionID">26</int>
+					<int key="connectionID">31</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">openChat:</string>
+						<string key="label">openHelp:</string>
 						<reference key="source" ref="592145928"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">23</int>
+					<int key="connectionID">32</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -228,7 +228,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">26</int>
+			<int key="maxID">32</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -236,10 +236,6 @@
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
 			<real value="1280" key="NS.object.0"/>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1552" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
