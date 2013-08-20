@@ -37,6 +37,18 @@
  */
 -(BOOL)searchView:(id)searchView didSelectArticle:(NSString *)articleId withTitle:(NSString *)title andURL:(NSString *)url andBaseURL:(NSString *)baseURL andContent:(NSString *)content;
 
+/** Tells the delegate that a specific article was loaded. The delegate must handle the article display by itself.
+ * This is invoked in response to the loadArticle call.
+ *
+ * @param searchView The HMHelpDeskSearchView instance that generated the event.
+ * @param articleId The id of the loaded article.
+ * @param title The title of the loaded article.
+ * @param url The URL of the loaded article.
+ * @param baseURL The base URL for resolving embedded images and content.
+ * @param content The content of the loaded article.
+ *
+ */
+-(void)searchView:(id)searchView didLoadArticle:(NSString *)articleId withTitle:(NSString *)title andURL:(NSString *)url andBaseURL:(NSString *)baseURL andContent:(NSString *)content;
 /**
  * Tells the delegate that an error occured.
  *
@@ -111,6 +123,14 @@
  * Flushes the query cache. Useful to deal with memory warnings.
  */
 -(void) flushCache;
+
+/**
+ * Loads a specific article (by id). This can be used to retrieve the content for a particular
+ * help page.
+ *
+ * @param articleId The identifier for the help article to be rendered.
+ */
+-(void) loadArticle:(NSString *)articleId;
 @end
 #endif
 

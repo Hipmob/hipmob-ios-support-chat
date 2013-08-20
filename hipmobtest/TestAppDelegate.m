@@ -51,7 +51,6 @@
             [(TestViewController *)self.viewController setMessageWaitingIndicator:[(NSDictionary *)[userInfo valueForKey:@"aps"] valueForKey:@"badge"]];
         }
     }
-    
     return YES;
 }
 

@@ -52,8 +52,14 @@
 							<object class="IBUINavigationItem" id="210560455">
 								<reference key="IBUINavigationBar" ref="401761563"/>
 								<string key="IBUITitle"/>
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="99593090">
+									<string key="IBUITitle">Instant Help</string>
+									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+									<int key="IBUIStyle">1</int>
+									<reference key="IBUINavigationItem" ref="210560455"/>
+								</object>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="433288465">
-									<string key="IBUITitle">Help</string>
+									<string key="IBUITitle">Search Help</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="210560455"/>
@@ -85,7 +91,6 @@
 						<string key="NSFrame">{{373, 514}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">201</int>
@@ -137,6 +142,14 @@
 					</object>
 					<int key="connectionID">42</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">openInstantHelp:</string>
+						<reference key="source" ref="99593090"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">44</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -180,6 +193,7 @@
 						<reference key="object" ref="210560455"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="433288465"/>
+							<reference ref="99593090"/>
 						</array>
 						<reference key="parent" ref="401761563"/>
 					</object>
@@ -198,6 +212,11 @@
 						<reference key="object" ref="433288465"/>
 						<reference key="parent" ref="210560455"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">43</int>
+						<reference key="object" ref="99593090"/>
+						<reference key="parent" ref="210560455"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -210,13 +229,14 @@
 				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="43.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">42</int>
+			<int key="maxID">44</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -226,6 +246,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="openChat:">id</string>
 						<string key="openHelp:">id</string>
+						<string key="openInstantHelp:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="openChat:">
@@ -234,6 +255,10 @@
 						</object>
 						<object class="IBActionInfo" key="openHelp:">
 							<string key="name">openHelp:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openInstantHelp:">
+							<string key="name">openInstantHelp:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

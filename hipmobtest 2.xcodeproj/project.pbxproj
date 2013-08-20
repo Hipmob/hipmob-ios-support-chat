@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B120182F17BE0F1300DD9532 /* CancelIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B120182D17BE0F1300DD9532 /* CancelIcon.png */; };
+		B120183017BE0F1300DD9532 /* CancelIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B120182E17BE0F1300DD9532 /* CancelIcon@2x.png */; };
 		B157562D177A50DD0037E482 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B157562C177A50DC0037E482 /* CoreData.framework */; };
 		B157563E177A50F10037E482 /* hipmob-back.png in Resources */ = {isa = PBXBuildFile; fileRef = B157562E177A50F10037E482 /* hipmob-back.png */; };
 		B157563F177A50F10037E482 /* hipmob-chatbubble-from.png in Resources */ = {isa = PBXBuildFile; fileRef = B157562F177A50F10037E482 /* hipmob-chatbubble-from.png */; };
@@ -50,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B120182D17BE0F1300DD9532 /* CancelIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CancelIcon.png; path = hipmobtest/CancelIcon.png; sourceTree = "<group>"; };
+		B120182E17BE0F1300DD9532 /* CancelIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CancelIcon@2x.png"; path = "hipmobtest/CancelIcon@2x.png"; sourceTree = "<group>"; };
 		B127355A16D653EA004CF3CD /* aqua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aqua.png; sourceTree = "<group>"; };
 		B127355B16D653EA004CF3CD /* bluechatbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluechatbubble.png; sourceTree = "<group>"; };
 		B127355C16D653EA004CF3CD /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		B1C0E34D16110F450022AC87 = {
 			isa = PBXGroup;
 			children = (
+				B120182D17BE0F1300DD9532 /* CancelIcon.png */,
+				B120182E17BE0F1300DD9532 /* CancelIcon@2x.png */,
 				B157562E177A50F10037E482 /* hipmob-back.png */,
 				B157562F177A50F10037E482 /* hipmob-chatbubble-from.png */,
 				B1575630177A50F10037E482 /* hipmob-chatbubble-from@2x.png */,
@@ -320,6 +326,8 @@
 				B1C903351783855700929765 /* Default@2x.png in Resources */,
 				B1C903361783855700929765 /* InfoPlist.strings in Resources */,
 				B1C903371783855700929765 /* hipmobtest 2-Info.plist in Resources */,
+				B120182F17BE0F1300DD9532 /* CancelIcon.png in Resources */,
+				B120183017BE0F1300DD9532 /* CancelIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

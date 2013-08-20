@@ -9,7 +9,6 @@
 #import "TestViewController.h"
 #import <CoreFoundation/CoreFoundation.h>
 
-#define APPID @"2ea7d86854df4ca185af84e68ea72fe1"
 @interface TestViewController ()
 {
     UIWebView * mainWebView;
@@ -56,6 +55,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     display= NO;
     display2 = NO;
+    display3 = NO;
     activity = (UIActivityIndicatorView *)[self.view viewWithTag:201];
     mainWebView = (UIWebView *)[self.view viewWithTag:200];
     mainWebView.delegate = self;
@@ -68,7 +68,7 @@
         [defaults setObject:userid forKey:@"userid"];
         [defaults synchronize];
     }
-    currenturl = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://web.mit.edu"]];
+    currenturl = [NSURLRequest requestWithURL:[NSURL URLWithString:STARTPAGE]];
 #if !__has_feature(objc_arc)
     [currenturl retain];
     [userid retain];
@@ -102,6 +102,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)openInstantHelp:(id)sender
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+#if !__has_feature(objc_arc)
+        if(helppage) [helppage release];
+#endif
+        helppage = [[HMHelpDeskArticleViewController alloc] initWithAppID:APPID andArticle:ARTICLEID andUser:userid andInfo:nil];
+        helppage.body.articleViewDelegate = self;
+        [self presentModalViewController:helppage animated:YES];
+    }else{
+        if(!display2){
+#if !__has_feature(objc_arc)
+            if(helppage2) [helppage2 release];
+#endif
+            helppage2 = [[HMHelpDeskArticleViewPopoverController alloc] initWithView:(UIView *)sender andAppID:APPID andArticle:ARTICLEID andUser:userid andInfo:nil];
+            
+            helppage2.content.navigationBar.tintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
+            helppage2.content.contentSizeForViewInPopover = CGSizeMake(320, 240);
+            helppage2.passthroughViews = [[NSArray alloc] initWithObjects:self.view, nil];
+            
+            helppage2.content.body.articleViewDelegate = self;
+            [helppage2 presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            display3 = YES;
+        }
+    }
+}
+
 - (IBAction)openHelp:(id)sender
 {
    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -110,8 +137,12 @@
 #endif
        helpdesk = [[HMHelpDeskSearchViewController alloc] initWithAppID:APPID andUser:userid andInfo:nil];
        helpdesk.searchDelegate = self;
-       helpdesk.searchView.defaultQuery = @"iOS";
+       helpdesk.searchView.defaultQuery = DEFAULTQUERY;
        helpdesk.shouldUseSystemBrowser = NO;
+       
+       // test out article loading
+       //[helpdesk.searchView loadArticle:@"1169672"];
+       //[helpdesk.searchView loadArticle:@"22290710"];
        [self presentModalViewController:helpdesk animated:YES];
    }else{
        if(!display2){
@@ -122,7 +153,7 @@
 
            helpdesk2.content.navigationBar.tintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
            helpdesk2.content.title = @"Help";
-           helpdesk2.content.searchView.defaultQuery = @"iOS";
+           helpdesk2.content.searchView.defaultQuery = DEFAULTQUERY;
            helpdesk2.content.contentSizeForViewInPopover = CGSizeMake(320, 240);
            helpdesk2.passthroughViews = [[NSArray alloc] initWithObjects:self.view, nil];
            
@@ -344,6 +375,14 @@
 #endif
             helpdesk2 = nil;
         }
+    }else if(popoverController == helppage2){
+        display3 = NO;
+        if(helppage2){
+#if !__has_feature(objc_arc)
+            [helppage2 release];
+#endif
+            helppage2 = nil;
+        }
     }
 }
 
@@ -427,4 +466,34 @@
         }
     }
 }
+
+-(void)contentArticleViewController:(id)contentArticleViewController didLoadArticle:(NSString *)articleId withTitle:(NSString *)title andURL:(NSString *)url andBaseURL:(NSString *)baseURL andContent:(NSString *)content
+{
+    
+}
+
+/*
+-(void)contentArticleViewController:(id)contentArticleViewController didErrorOccur:(NSString *)error;
+*/
+
+-(void)contentArticleViewControllerWillDismiss:(id)contentArticleViewController
+{
+    display3 = NO;
+    if(helppage2){
+        if(helppage2.content.body == contentArticleViewController){
+#if !__has_feature(objc_arc)
+            [helppage2 release];
+#endif
+            helppage2 = nil;
+        }
+    }else if(helppage){
+        if(helppage.body == contentArticleViewController){
+#if !__has_feature(objc_arc)
+            [helppage release];
+#endif
+            helppage = nil;
+        }
+    }
+}
+
 @end
