@@ -41,10 +41,18 @@
 /**
  * Tells the delegate that a message we care about was received.
  *
- * @param chatViewController The HMChatViewController instance that received the error.
+ * @param chatViewController The HMChatViewController instance that received the message.
  * @param message The message that was received.
  */
 -(void)chatViewController:(id)chatViewController didReceiveMessage:(HMChatMessage *)message;
+
+/**
+ * Tells the delegate that a message we care about was sent.
+ *
+ * @param chatViewController The HMChatViewController instance that sent the message.
+ * @param message The message that was sent.
+ */
+-(void)chatViewController:(id)chatViewController didSendMessage:(HMChatMessage *)message;
 
 /**
  * Tells the delegate that the view controller is closing.
@@ -102,6 +110,11 @@
  * Set to YES to prevent the controller from adjusting for keyboard show/hide (defaults to NO). This is particularly useful when embedding in popover view controllers.
  */
 @property (nonatomic, assign) BOOL disableKeyboardAdjustment;
+
+/**
+ * Sets the preferred status bar style.
+ */
+@property (nonatomic, assign) UIStatusBarStyle overridePreferredStatusBarStyle;
 
 /** The HMChatViewControllerDelegate for this chat view.
  */

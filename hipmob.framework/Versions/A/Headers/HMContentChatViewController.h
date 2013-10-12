@@ -41,10 +41,18 @@
 /**
  * Tells the delegate that a message we care about was received.
  *
- * @param contentChatViewController The HMContentChatViewController instance that received the error.
+ * @param contentChatViewController The HMContentChatViewController instance that received the message.
  * @param message The message that was received.
  */
 -(void)contentChatViewController:(id)contentChatViewController didReceiveMessage:(HMChatMessage *)message;
+
+/**
+ * Tells the delegate that a message we care about was sent.
+ *
+ * @param contentChatViewController The HMContentChatViewController instance that received the message.
+ * @param message The message that was sent.
+ */
+-(void)contentChatViewController:(id)contentChatViewController didSendMessage:(HMChatMessage *)message;
 
 /**
  * Tells the delegate that the view controller is closing.
@@ -54,8 +62,9 @@
 -(void)contentChatViewControllerWillDismiss:(id)contentChatViewController;
 @end
 
-/**
- * Provides a simple UIViewController that renders a full-screen chat window.
+/** Provides a simple UIViewController that renders a full-screen chat window.
+ 
+ This can be used inside a container view controller to embed a chat view within a more complex user interface.
  */
 @interface HMContentChatViewController : UIViewController <HMChatViewDelegate, UIGestureRecognizerDelegate>
 {

@@ -8,6 +8,7 @@
 #ifndef _hipmob_hmhelpdesksearchview_h_
 #define _hipmob_hmhelpdesksearchview_h_
 
+#import "HMVersion.h"
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreData/CoreData.h>
@@ -61,6 +62,7 @@
 /** The core Hipmob help desk search view.
  
  HMHelpDeskSearchView is a custom UIView that renders a help desk search interface. It provides a set of delegate callbacks that allow the view controller to be notified of user actions in the search view.
+ *
  */
 @interface HMHelpDeskSearchView : UIView <UISearchBarDelegate>
 {
@@ -71,6 +73,11 @@
  * The Hipmob application used by this search view.
  */
 @property (readonly, nonatomic, retain) NSString * app;
+
+/**
+ * The Hipmob user identifier for the user running this search.
+ */
+@property (readonly, nonatomic, retain) NSString * user;
 
 /**
  * The default search query to use when the view first appears.
@@ -113,8 +120,9 @@
  *
  * @param frame The initial frame for the chat view.
  * @param appid The Hipmob application identifier for this app.
+ * @param userid The user identifier for the user making the search.
  */
--(id) initWithFrame:(CGRect)frame andAppID:(NSString *)appid;
+-(id) initWithFrame:(CGRect)frame andAppID:(NSString *)appid andUser:(NSString *)userid;
 
 ///------------------------------------------------------------------------------------------
 /// @name Utilities

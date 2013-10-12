@@ -17,6 +17,7 @@
     NSURLRequest * currenturl;
     NSData * token;
     NSString * userid;
+    int OSVersion;
 }
 @end
 
@@ -47,11 +48,43 @@
     return uuid;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    if([self respondsToSelector:@selector(edgesForExtendedLayout)]){
+        self.view.frame = CGRectMake(0, self.topOfViewOffset, self.view.frame.size.width, self.view.frame.size.height - self.topOfViewOffset);
+    }
+}
+
+- (CGFloat)topOfViewOffset
+{
+    CGFloat top = 0;
+    if ([self respondsToSelector:@selector(topLayoutGuide)])
+    {
+        top = self.topLayoutGuide.length;
+    }
+    return top;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    OSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    if([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]){
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+
     _navBar.topItem.title = @"Support Chat Demo";
+    if([self respondsToSelector:@selector(edgesForExtendedLayout)]){
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+    
 	// Do any additional setup after loading the view, typically from a nib.
     display= NO;
     display2 = NO;
@@ -68,6 +101,9 @@
         [defaults setObject:userid forKey:@"userid"];
         [defaults synchronize];
     }
+    
+    [[HMChatOperatorAvailabilityCheck alloc] initWithAppID:APPID andNotify:self];
+    
     currenturl = [NSURLRequest requestWithURL:[NSURL URLWithString:STARTPAGE]];
 #if !__has_feature(objc_arc)
     [currenturl retain];
@@ -81,12 +117,12 @@
     [super viewDidAppear:animated];
 }
 
--(void)operatorOffline:(NSString *)app
+-(void)operatorCheck:(id)operatorCheck isOperatorOffline:(NSString *)app
 {
     _navBar.topItem.rightBarButtonItem.tintColor = [UIColor orangeColor];
 }
 
--(void)operatorAvailable:(NSString *)app
+-(void)operatorCheck:(id)operatorCheck isOperatorAvailable:(NSString *)app
 {
     _navBar.topItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0/255.0 green:153.0/255.0 blue:0/255.0 alpha:1];
 }
@@ -108,7 +144,7 @@
 #if !__has_feature(objc_arc)
         if(helppage) [helppage release];
 #endif
-        helppage = [[HMHelpDeskArticleViewController alloc] initWithAppID:APPID andArticle:ARTICLEID andUser:userid andInfo:nil];
+        helppage = [[HMHelpDeskArticleViewController alloc] initWithAppID:APPID andArticleURL:ARTICLEURL andUser:userid andInfo:nil];
         helppage.body.articleViewDelegate = self;
         [self presentModalViewController:helppage animated:YES];
     }else{
@@ -116,9 +152,14 @@
 #if !__has_feature(objc_arc)
             if(helppage2) [helppage2 release];
 #endif
-            helppage2 = [[HMHelpDeskArticleViewPopoverController alloc] initWithView:(UIView *)sender andAppID:APPID andArticle:ARTICLEID andUser:userid andInfo:nil];
+            helppage2 = [[HMHelpDeskArticleViewPopoverController alloc] initWithView:(UIView *)sender andAppID:APPID andArticleURL:ARTICLEURL andUser:userid andInfo:nil];
             
-            helppage2.content.navigationBar.tintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
+            if(OSVersion >= 7.0f && [helppage2.content.navigationBar respondsToSelector:@selector(setBarTintColor:)]){
+                helppage2.content.navigationBar.barTintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
+                helppage2.content.navigationBar.translucent = FALSE;
+            }else{
+                helppage2.content.navigationBar.tintColor = [UIColor colorWithRed:145.0/255.0 green:18.0/255.0 blue:0.0 alpha:1];
+            }
             helppage2.content.contentSizeForViewInPopover = CGSizeMake(320, 240);
             helppage2.passthroughViews = [[NSArray alloc] initWithObjects:self.view, nil];
             
@@ -495,5 +536,4 @@
         }
     }
 }
-
 @end

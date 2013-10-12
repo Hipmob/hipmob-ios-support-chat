@@ -101,7 +101,8 @@
  * Typically there will be one application identifier for each app.
  *
  * @param app The Hipmob application identifier for this app.
+ * @param user The user identifier for this user. Can be set to nil if not in use.
  */
--(id) initWithAppID:(NSString *)app;
+-(id) initWithAppID:(NSString *)app andUser:(NSString *)user;
 @end
 #endif

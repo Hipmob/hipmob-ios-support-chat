@@ -17,10 +17,10 @@
 #include <hipmob/HMHelpDeskArticleViewPopoverController.h>
 
 #define STARTPAGE       @"http://web.mit.edu"
-#define APPID           @"2ea7d86854df4ca185af84e68ea72fe1"
-#define ARTICLEID       @"1169672"
-//#define APPID         @"adb2a3dc1aeb470c9a805ce0213cfde4"
+#define APPID           @"7152ce24a16d42eb8d30b5fe4c01f911"
+#define ARTICLEURL      @"https://hipmob.desk.com/customer/portal/articles/1078783-add-push-notifications-to-iphone-and-android-apps-using-apns-gcm-and-parse"
 #define DEFAULTQUERY    @"iOS";
+
 @interface TestViewController : UIViewController <UIWebViewDelegate, UIPopoverControllerDelegate, HMChatViewControllerDelegate, HMChatOperatorAvailabilityCheckDelegate, HMHelpDeskSearchViewControllerDelegate, HMHelpDeskArticleViewControllerDelegate, HMContentHelpDeskArticleViewControllerDelegate>
 {
     HMChatViewController * livechat;

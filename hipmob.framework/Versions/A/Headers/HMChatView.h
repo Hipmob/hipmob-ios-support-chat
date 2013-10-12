@@ -72,29 +72,52 @@
  * Tells the delegate that one or more chat operators are available for a specified app. An HTTP call is made to the Hipmob availability API and the
  * result of the call is returned.
  *
+ * @param operatorCheck The HMChatOperatorAvailabilityCheck instance that performed the callback.
  * @param app The Hipmob application ID for which operator(s) are available.
  */
--(void)operatorAvailable:(NSString *)app;
+-(void)operatorCheck:(id)operatorCheck isOperatorAvailable:(NSString *)app;
 
 /**
  * Tells the delegate that no chat operators are available for a specified app. An HTTP call is made to the Hipmob availability API and the
  * result of the call is returned.
  *
+ * @param operatorCheck The HMChatOperatorAvailabilityCheck instance that performed the callback.
  * @param app The Hipmob application ID for which operator(s) are not available.
  */
--(void)operatorOffline:(NSString *)app;
+-(void)operatorCheck:(id)operatorCheck isOperatorOffline:(NSString *)app;
 @end
 
-/** The HMChatOperatorAvailabilityCheck.
+/** HMChatOperatorAvailabilityCheck is a simple class that allows an app to check if any operators are available for a specific Hipmob app.
  
-    HMChatOperatorAvailabilityCheck is a simple class that allows an app to check if any operators are available for a specific Hipmob app.
+ As an example, if you'd like to only show the live chat button when an operator is available, you can implement the HMChatViewAvailabilityCheckDelegate protocol and then create an instance of [HMChatOperatorAvailabilityCheck](./Classes/HMChatOperatorAvailabilityCheck.html). This will make the necessary network calls to the Hipmob chat network and then invoke the appropriate delegate methods. For example, here we call the method in the viewDidAppear function.
+ 
+     - (void)viewDidAppear:(BOOL)animated
+     {
+     [super viewDidAppear:animated];
+     
+     HMChatOperatorAvailabilityCheck * check = [[HMChatOperatorAvailabilityCheck alloc] initWithAppID:@"2ea7d86854df4ca185af84e68ea72fe1" andNotify:self];
+     }
+ 
+ And in the delegate methods we change the background color of the live chat button to orange if there are no operators available, or green if there are.
+ 
+     -(void)operatorCheck:(id)operatorCheck isOperatorOffline:(NSString *)app
+     {
+     _navBar.topItem.rightBarButtonItem.tintColor = [UIColor orangeColor];
+     [check release];
+     }
+     
+     -(void)operatorCheck:(id)operatorCheck isOperatorAvailable:(NSString *)app
+     {
+     _navBar.topItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0/255.0 green:153.0/255.0 blue:0/255.0 alpha:1];
+     [check release];
+     }
+
  */
 @interface HMChatOperatorAvailabilityCheck : NSObject
 {
     
 }
-/**
- * The HMChatOperatorAvailabilityCheckDelegate to be notified.
+/** The HMChatOperatorAvailabilityCheckDelegate to be notified.
  */
 @property (assign) id<HMChatOperatorAvailabilityCheckDelegate>delegate;
 
@@ -113,7 +136,7 @@
  * @param appid The Hipmob application identifier for this app.
  * @param delegate THe HMChatOperatorAvailabilityCheckDelegate to be notified. Must not be null.
  */
--(id) initWithAppID:(NSString *)appid andNotify:(id<HMChatOperatorAvailabilityCheckDelegate>)observer;
+-(id) initWithAppID:(NSString *)appid andNotify:(id<HMChatOperatorAvailabilityCheckDelegate>)delegate;
 
 
 /**
@@ -161,6 +184,27 @@
  * @param message The HMChatMessage instance that was received.
  */
 -(void)chatView:(id)chatView didReceiveMessage:(HMChatMessage *)message;
+
+/**
+ * Tells the delegate that a message was sent that was relevant to this view.
+ *
+ * If multiple views are connected to a single remote connection a message may have been sent that is not relevant to the current view
+ * (for example, a message from another chat view with a peer may be sent when the currently visible chat view is for support messages).
+ * This provides a way for the chatview to indicate to its delegate that a new message that was sent was from this chat view, so the
+ * owner may perform some additional notification.
+ *
+ * @param chatView The HMChatView instance that sent the message.
+ * @param message The HMChatMessage instance that was sent.
+ */
+-(void)chatView:(id)chatView didSendMessage:(HMChatMessage *)message;
+
+/**
+ * Tells the delegate that an operator accepted the chat.
+ *
+ * @param chatView The HMChatView instance that sent the message.
+ * @param operator The operator's user identifier.
+ */
+-(void)chatView:(id)chatView didOperatorAccept:(NSString *)operator;
 
 /**
  * Tells the delegate that the connection came online.
@@ -285,6 +329,16 @@
  * Contains the color used to render chat messages received by the user. Defaults to black.
  */
 @property (nonatomic, retain) UIColor * receivedTextColor;
+
+/**
+ * Contains the default UITextView padding used for sent messages.
+ */
+@property (nonatomic, assign) CGFloat sentPadding;
+
+/**
+ * Contains the default UITextView padding used for received messages.
+ */
+@property (nonatomic, assign) CGFloat receivedPadding;
 
 ///------------------------------------------------------------------------------------------
 /// @name Initialization

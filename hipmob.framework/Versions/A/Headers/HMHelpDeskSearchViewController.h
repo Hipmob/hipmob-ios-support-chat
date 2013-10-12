@@ -34,6 +34,14 @@
 
 @optional
 /**
+ * Tells the delegate that the chat button has been displayed, and passes the button so additional styling can be applied.
+ *
+ * @param searchViewController The HMHelpDeskSearchViewController instance that received the error.
+ * @param chatButton The UIButton added to the navigation bar.
+ */
+-(void)searchViewController:(id)searchViewController hasShownChatButton:(UIButton *)chatButton;
+
+/**
  * Tells the delegate that an error occured in the underlying search view
  *
  * @param searchViewController The HMHelpDeskSearchViewController instance that received the error.
@@ -57,8 +65,18 @@
 -(void)searchViewControllerWillDismiss:(id)searchViewController;
 @end
 
-/**
- * Provides a simple UIViewController that renders a full-screen help desk search window.
+/** Provides a simple UIViewController that renders a full-screen help desk search window.
+ 
+ A usage example is below: this creates an instance of the controller, changes the tint of the title bar and then sets a default search query that should be displayed. It also ensures that help pages opened by the user are opened within the application:
+ 
+    helpdesk = [[HMHelpDeskSearchViewController alloc] initWithAppID:APPID andUser:userid andInfo:nil];
+    helpdesk.navigationBar.tintColor = [UIColor colorWithRed:236.0/255.0 green:244.0/255.0 blue:243.0/255.0 alpha:1];
+    helpdesk.searchDelegate = self;
+    helpdesk.searchView.defaultQuery = @"iOS";
+    helpdesk.shouldUseSystemBrowser = NO;
+    [self presentModalViewController:helpdesk animated:YES];
+ 
+ Any modifications to the appearance of the helpdesk search view can be made by accessing the `helpdesk.searchView` 
  */
 @interface HMHelpDeskSearchViewController : UINavigationController <HMHelpDeskSearchViewDelegate, HMChatOperatorAvailabilityCheckDelegate, UIGestureRecognizerDelegate>
 {
@@ -106,6 +124,11 @@
  */
 @property (nonatomic, assign) BOOL disableKeyboardAdjustment;
 
+/**
+ * Sets the preferred status bar style.
+ */
+@property (nonatomic, assign) UIStatusBarStyle overridePreferredStatusBarStyle;
+
 /** The HMChatViewControllerDelegate for this chat view.
  */
 @property (assign) id<HMHelpDeskSearchViewControllerDelegate> searchDelegate;
@@ -135,7 +158,7 @@
  *
  * @param app The Hipmob application identifier for this app.
  * @param user The user identifier for this user. Can be set to nil to use an internally generated id.
- * @param info Additional connection information to be provided to the connection. Acceptable keys are {name},
+ * @param userInfo Additional connection information to be provided to the connection. Acceptable keys are {name},
  * {email}, {context} and {pushtoken}.
  */
 -(id) initWithAppID:(NSString *)app andUser:(NSString *)user andInfo:(NSDictionary *)userInfo;

@@ -9,6 +9,7 @@
 #ifndef hipmob_HMCore_h
 #define hipmob_HMCore_h
 
-#define HIPMOB_LIBRARY_VERSION      2.2.0
+#define HIPMOB_LIBRARY_VERSION              2.6.2
+#define HIPMOB_LIBRARY_VERSION_STRING       @"2.6.2"
 
 #endif

@@ -97,6 +97,18 @@
  */
 -(id) initWithAppID:(NSString *)app andArticle:(NSString *)articleId;
 
+/** Initializes the HMContentHelpDeskSearchViewController object to connect with a specific Hipmob app identifier. This
+ * will control which help desk the search runs through.
+ *
+ * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
+ * let the Hipmob network identify the specific help desk you wish to searches to be run against.
+ * Typically there will be one application identifier for each app.
+ *
+ * @param app The Hipmob application identifier for this app.
+ * @param articleUrl The URL of the helpdesk article to be displayed.
+ */
+-(id) initWithAppID:(NSString *)app andArticleURL:(NSString *)articleUrl;
+
 -(void)setPopoverSize:(CGSize)size;
 
 /**

@@ -26,8 +26,18 @@
  */
 #define HMHDSDefaultPopoverSize            CGSizeMake(260, 280)
 
-/**
- * Provides a popover controller for use in tablet displays.
+/** Provides a popover controller for use in tablet displays.
+ 
+ This provides a neatly-packaged popover that wraps an HMHelpDeskSearchViewController with the appropriate logic to display it cleanly in a popover. It also allows interaction with the rest of the parent view (using the popover's passthroughViews property.
+ 
+    helpdesk2 = [[HMHelpDeskSearchPopoverController alloc] initWithView:(UIView *)sender andAppID:APPID andUser:userid andInfo:nil];
+ 
+    helpdesk2.content.navigationBar.tintColor = [UIColor colorWithRed:236.0/255.0 green:244.0/255.0 blue:243.0/255.0 alpha:1];
+    helpdesk2.content.searchView.defaultQuery = @"iOS";
+    helpdesk2.content.contentSizeForViewInPopover = CGSizeMake(320, 240);
+    helpdesk2.passthroughViews = [[NSArray alloc] initWithObjects:self.view, nil];
+    helpdesk2.content.searchDelegate = self;
+    [helpdesk2 presentPopoverFromBarButtonItem:(UIBarButtonItem *)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
  */
 @interface HMHelpDeskSearchPopoverController : UIPopoverController
 {
@@ -75,7 +85,7 @@
  * @param view The view to attach the popover to.
  * @param app The Hipmob application identifier for this app.
  * @param user The user identifier for this user. Can be set to nil to use an internally generated id.
- * @param info Additional connection information to be provided to the connection. Acceptable keys are {name},
+ * @param userInfo Additional connection information to be provided to the connection. Acceptable keys are {name},
  * {email}, {context} and {pushtoken}.
  */
 -(id) initWithView:(UIView *)view andAppID:(NSString *)app andUser:(NSString *)user andInfo:(NSDictionary *)userInfo;

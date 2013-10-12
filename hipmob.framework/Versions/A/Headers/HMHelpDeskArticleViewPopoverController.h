@@ -77,10 +77,41 @@
  * @param app The Hipmob application identifier for this app.
  * @param articleId The helpdesk article identifier to be displayed.
  * @param user The user identifier for this user. Can be set to nil to use an internally generated id.
- * @param info Additional connection information to be provided to the connection. Acceptable keys are {name},
+ * @param userInfo Additional connection information to be provided to the connection. Acceptable keys are {name},
  * {email}, {context} and {pushtoken}.
  */
 -(id) initWithView:(UIView *)view andAppID:(NSString *)app andArticle:(NSString *)articleId andUser:(NSString *)user andInfo:(NSDictionary *)userInfo;
+
+/** Initializes the HMHelpDeskArticleViewPopoverController object to connect with a specific Hipmob app identifier
+ * and display a specific article. The app identifier will control which help desk the article will be loaded from.
+ *
+ * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
+ * let the Hipmob network identify the specific help desk you wish to articles to be loaded from.
+ * Typically there will be one application identifier for each app.
+ *
+ * @param view The view to attach the popover to.
+ * @param app The Hipmob application identifier for this app.
+ * @param articleUrl The URL of the helpdesk article to be displayed
+ */
+-(id) initWithView:(UIView *)view andAppID:(NSString *)app andArticleURL:(NSString *)articleUrl;
+
+/** Initializes the HMHelpDeskArticleViewPopoverController object to connect with a specific Hipmob app identifier
+ * and display a specific article. The app identifier will control which help desk the article will be loaded from.
+ *
+ * The application identifier can be obtained from https://manage.hipmob.com/#apps and will
+ * let the Hipmob network identify the specific help desk you wish to searches to be run against.
+ * Typically there will be one application identifier for each app. If this method is used then a check
+ * will be made to see if any operators are online for the specified Hipmob app: if there are operators
+ * available then a chat button will also be shown.
+ *
+ * @param view The view to attach the popover to.
+ * @param app The Hipmob application identifier for this app.
+ * @param articleUrl The URL of the helpdesk article to be displayed.
+ * @param user The user identifier for this user. Can be set to nil to use an internally generated id.
+ * @param userInfo Additional connection information to be provided to the connection. Acceptable keys are {name},
+ * {email}, {context} and {pushtoken}.
+ */
+-(id) initWithView:(UIView *)view andAppID:(NSString *)app andArticleURL:(NSString *)articleUrl andUser:(NSString *)user andInfo:(NSDictionary *)userInfo;
 
 ///------------------------------------------------------------------------------------------
 /// @name Position and Size
